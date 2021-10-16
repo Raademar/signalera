@@ -14,6 +14,20 @@
     "package.json"
   ],
   "author": "Mattias Rådemar <mattiasrademar@gmail.com>",
+  "homepage": "https://github.com/Raademar/signalera#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Raademar/signalera.git"
+  },
+  "bugs": {
+    "email": "mattiasrademar@gmail.com",
+    "url": "https://github.com/Raademar/signalera"
+  },
+  "keywords": [
+    "Notifications",
+    "Badge",
+    "Alerts"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "react": ">=17.0.2",
