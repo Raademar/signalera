@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SignaleraContext, SignaleraProvider } from "./context";
+import { SignaleraContext } from "./context";
 import { SignaleraItem } from "./SignaleraItem";
 
 const SignaleraItems: React.FC = () => {
@@ -22,14 +22,5 @@ export function useSignalera() {
 }
 
 export const Signalera: React.FC = () => {
-  const { dispatch } = useSignalera();
-  dispatch({
-    type: "ADD_SIGNAL",
-    payload: { id: 2, title: "Testing123", color: "blue" },
-  });
-  return (
-    <SignaleraProvider>
-      <SignaleraItems />
-    </SignaleraProvider>
-  );
+  return <SignaleraItems />;
 };
