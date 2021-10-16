@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SignaleraContext, SignaleraProvider } from "./context";
+import { SignaleraItem } from "./SignaleraItem";
 
-export const Signalera: React.FC = () => {
+const SignaleraItems: React.FC = () => {
+  const { state } = useContext(SignaleraContext);
   return (
     <div>
-      <h1>Signalera!!!!!!</h1>
+      {state.signals.map((signal) => (
+        <SignaleraItem key={signal.id} {...signal} />
+      ))}
     </div>
+  );
+};
+
+export function useSignalera() {
+  const context = useContext(SignaleraContext);
+  if (context === undefined) {
+    throw new Error("useSignalera must be within a SignaleraProvider");
+  }
+  return context;
+}
+
+export const Signalera: React.FC = () => {
+  const { dispatch } = useSignalera();
+  dispatch({
+    type: "ADD_SIGNAL",
+    payload: { id: 2, title: "Testing123", color: "blue" },
+  });
+  return (
+    <SignaleraProvider>
+      <SignaleraItems />
+    </SignaleraProvider>
   );
 };
