@@ -1,13 +1,27 @@
 import React, { useContext } from "react";
-import { SignaleraContext } from "./context";
+import { SignaleraContext, SignaleraProvider } from "./context";
 import { SignaleraItem } from "./SignaleraItem";
 
 const SignaleraItems: React.FC = () => {
-  const { state } = useContext(SignaleraContext);
+  const { dispatch, state } = useContext(SignaleraContext);
+
+  const removeSignal = (id: number) => {
+    dispatch({
+      type: "DELETE_SIGNAL",
+      payload: {
+        id,
+      },
+    });
+  };
+
   return (
     <div>
       {state.signals.map((signal) => (
-        <SignaleraItem key={signal.id} {...signal} />
+        <SignaleraItem
+          key={signal.id}
+          signal={signal}
+          removeSignal={() => removeSignal(signal.id)}
+        />
       ))}
     </div>
   );
@@ -21,6 +35,11 @@ export function useSignalera() {
   return context;
 }
 
-export const Signalera: React.FC = () => {
-  return <SignaleraItems />;
+export const Signalera: React.FC = ({ children }) => {
+  return (
+    <SignaleraProvider>
+      <SignaleraItems />
+      {children}
+    </SignaleraProvider>
+  );
 };
