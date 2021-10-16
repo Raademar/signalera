@@ -4,7 +4,7 @@
   "description": "Easy to use in app notification component",
   "main": "dist/index.js",
   "scripts": {
-    "deploy": "npm version patch && npm publish",
+    "deploy": "npm run build && npm version patch && npm publish",
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc --noEmit false",
     "test": "echo \"Error: no test specified\" && exit 1"
