@@ -1,6 +1,6 @@
 {
   "name": "signalera",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Easy to use in app notification component",
   "main": "dist/index.js",
   "scripts": {
