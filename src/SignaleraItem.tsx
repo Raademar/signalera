@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { SignaleraItemType, SignaleraLevelType } from "./types";
+import { levelToColor, SignaleraItemType, SignaleraLevelType } from "./types";
 import { useSignalera } from "./hooks";
+import { Alert, Info, Success, Warning } from "./assets";
 import "./signalera.css";
 
 export const SignaleraItem: React.FC<SignaleraItemType> = ({
@@ -9,7 +10,7 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
   level,
   title,
   icon,
-  timeToShow = 5000000000000000,
+  timeToShow = 5000,
 }) => {
   const { removeSignal } = useSignalera();
 
@@ -34,20 +35,19 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
     setShow(false);
   };
 
-  const mapLevelToClassname = (level: SignaleraLevelType) => {
+  const mapLevelToIcon = (level: SignaleraLevelType) => {
     switch (level) {
       case "primary":
-        return "signalera-background-primary";
+        return <Success color={levelToColor[level]} />;
       case "secondary":
-        return "signalera-background-secondary";
-      case "error":
-        return "signalera-background-error";
+        return <Info color={levelToColor[level]} />;
       case "warning":
-        return "signalera-background-warning";
-      case "info":
-        return "signalera-background-info";
+        return <Warning color={levelToColor[level]} />;
+      case "error":
+        return <Alert color={levelToColor[level]} />;
+
       default:
-        return "";
+        break;
     }
   };
 
@@ -61,10 +61,16 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
       in={show}
     >
       <div
-        className={`signalera-item ${mapLevelToClassname(level)}`}
+        className={`signalera-item signalera-dark-mode`}
         onClick={() => exitBeforeTimeout()}
       >
-        <p>{title}</p>
+        {mapLevelToIcon(level)}
+        <div className="signalera-item-text-container">
+          <p className={`signalera-${level}-title`}>{title}</p>
+          <p className={`signalera-${level}-body`}>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          </p>
+        </div>
       </div>
     </CSSTransition>
   );

@@ -13,31 +13,70 @@
   transition: opacity 500ms ease-in;
 }
 
+p,
+h4 {
+  margin: 0;
+}
+
+p {
+  font-weight: 600;
+}
+
 .signalera {
   position: absolute;
   top: 32px;
   right: 32px;
 }
 
+.signalera-dark-mode {
+  background-color: #312e51;
+}
+.signalera-dark-mode-text {
+  color: #fefefe;
+}
+
+.signalera-light-mode {
+  color: #312e51;
+}
+
 .signalera-item {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
 }
 
-.signalera-background-primary {
-  background-color: green;
+.signalera-item-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 32px;
 }
-.signalera-background-secondary {
-  background-color: blue;
+
+.signalera-primary-title {
+  color: #00fa9a;
 }
-.signalera-background-error {
-  background-color: red;
+.signalera-primary-body {
+  color: #ddfadb;
 }
-.signalera-background-warning {
-  background-color: orange;
+.signalera-secondary-title {
+  color: #00ffff;
 }
-.signalera-background-info {
-  background-color: lightblue;
+.signalera-secondary-body {
+  color: #e0ffff;
+}
+.signalera-error-title {
+  color: #f64747;
+}
+.signalera-error-body {
+  color: #fdd8d8;
+}
+.signalera-warning-title {
+  color: #f59208;
+}
+.signalera-warning-body {
+  color: #fef2d7;
 }
