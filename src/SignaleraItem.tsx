@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
+import { SignaleraContext } from "./context";
 import { levelToColor, SignaleraItemType, SignaleraLevelType } from "./types";
 import { useSignalera } from "./hooks";
 import { Alert, Info, Success, Warning } from "./assets";
@@ -9,9 +10,11 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
   id,
   level,
   title,
+  body,
   icon,
-  timeToShow = 5000,
+  timeToShow = 5000000000,
 }) => {
+  const { darkMode } = useContext(SignaleraContext);
   const { removeSignal } = useSignalera();
 
   const [show, setShow] = useState(false);
@@ -61,14 +64,28 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
       in={show}
     >
       <div
-        className={`signalera-item signalera-dark-mode`}
+        className={`signalera-item  ${
+          darkMode
+            ? "signalera-dark-mode"
+            : `signalera-light-${level}-background`
+        } `}
         onClick={() => exitBeforeTimeout()}
       >
         {mapLevelToIcon(level)}
         <div className="signalera-item-text-container">
-          <p className={`signalera-${level}-title`}>{title}</p>
-          <p className={`signalera-${level}-body`}>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          <p
+            className={`signalera-${
+              darkMode ? "dark" : "light"
+            }-${level}-title signalera-title`}
+          >
+            {title}
+          </p>
+          <p
+            className={`signalera-${
+              darkMode ? "dark" : "light"
+            }-${level}-body signalera-body`}
+          >
+            {body}
           </p>
         </div>
       </div>
