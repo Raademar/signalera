@@ -4,9 +4,11 @@
   "description": "Easy to use in app notification component",
   "main": "dist/index.js",
   "scripts": {
+    "copy-css": "cp src/signalera.css dist",
     "deploy": "npm run build && npm version patch && npm publish",
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc --noEmit false",
+    "build": "npm run clean && tsc --noEmit false && npm run copy-css",
+    "watch": "tsc --noEmit false --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
@@ -37,8 +39,12 @@
   "devDependencies": {
     "@types/react": "^17.0.30",
     "@types/react-dom": "^17.0.9",
+    "@types/react-transition-group": "^4.4.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "react-transition-group": "^4.4.2"
   }
 }

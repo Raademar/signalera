@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SignaleraContext } from "../context";
 import { SignaleraItemType } from "../types";
 
