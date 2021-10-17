@@ -1,1 +1,2 @@
-export { useSignalera, Signalera } from "./Signalera";
+export { Signalera } from "./Signalera";
+export { useSignalera } from "./hooks";

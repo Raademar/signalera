@@ -1,15 +1,19 @@
 import React, { useEffect } from "react";
 import { SignaleraItemType } from "./types";
+import { useSignalera } from "./hooks";
 
-export const SignaleraItem: React.FC<{
-  signal: SignaleraItemType;
-  removeSignal: () => void;
-}> = ({ signal, removeSignal }) => {
-  const { color, title, icon, timeToShow = 5000 } = signal;
+export const SignaleraItem: React.FC<SignaleraItemType> = ({
+  id,
+  color,
+  title,
+  icon,
+  timeToShow = 5000,
+}) => {
+  const { removeSignal } = useSignalera();
 
   useEffect(() => {
     setTimeout(() => {
-      removeSignal();
+      removeSignal(id);
     }, timeToShow);
   }, [color, title, icon, timeToShow]);
 
