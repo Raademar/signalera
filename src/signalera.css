@@ -12,3 +12,32 @@
   opacity: 0;
   transition: opacity 500ms ease-in;
 }
+
+.signalera {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+}
+
+.signalera-item {
+  display: flex;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.signalera-background-primary {
+  background-color: green;
+}
+.signalera-background-secondary {
+  background-color: blue;
+}
+.signalera-background-error {
+  background-color: red;
+}
+.signalera-background-warning {
+  background-color: orange;
+}
+.signalera-background-info {
+  background-color: lightblue;
+}

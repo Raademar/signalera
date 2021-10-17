@@ -1,9 +1,14 @@
-export type SignaleraColors = "green" | "blue" | "red" | "orange"; // Make this be types/level instead
+export type SignaleraLevelType =
+  | "primary"
+  | "secondary"
+  | "error"
+  | "warning"
+  | "info";
 
 export type SignaleraItemType = {
   id: number;
   title: string;
-  color: string; // Change to type
+  level: "primary" | "secondary" | "error" | "warning" | "info";
   icon?: string;
   timeToShow?: number;
 };
