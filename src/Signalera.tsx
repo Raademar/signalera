@@ -9,7 +9,7 @@ const SignaleraItems: React.FC = () => {
   const { state } = useContext(SignaleraContext);
 
   return (
-    <TransitionGroup className="signalera" appear>
+    <TransitionGroup className="signalera" exit>
       {state.signals.map((signal) => (
         <SignaleraItem key={signal.id} {...signal} />
       ))}

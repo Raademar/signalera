@@ -11,7 +11,6 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
   level,
   title,
   body,
-  icon,
   timeToShow = 5000000000,
 }) => {
   const { darkMode } = useContext(SignaleraContext);
@@ -23,13 +22,13 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
 
   useEffect(() => {
     setShow(true);
-  }, [level, title, icon, timeToShow]);
+  }, [level, title, timeToShow]);
 
   useEffect(() => {
     timeoutId = setTimeout(() => {
       setShow(false);
     }, timeToShow);
-  }, [level, title, icon, timeToShow]);
+  }, [level, title, timeToShow]);
 
   const exitBeforeTimeout = () => {
     if (timeoutId) {
@@ -64,14 +63,14 @@ export const SignaleraItem: React.FC<SignaleraItemType> = ({
       in={show}
     >
       <div
-        className={`signalera-item  ${
+        className={`signalera-item slide-${show ? "in" : "out"} ${
           darkMode
             ? "signalera-dark-mode"
             : `signalera-light-${level}-background`
         } `}
         onClick={() => exitBeforeTimeout()}
       >
-        {mapLevelToIcon(level)}
+        <div className="signalera-icon-wrapper">{mapLevelToIcon(level)}</div>
         <div className="signalera-item-text-container">
           <p
             className={`signalera-${

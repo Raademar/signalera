@@ -32,7 +32,7 @@ export const signaleraReducer = (
 ) => {
   switch (action.type) {
     case Types.Add: {
-      const { id, title, level, body, icon, timeToShow } = action.payload;
+      const { id, title, level, body, timeToShow } = action.payload;
       return [
         ...state,
         {
@@ -40,7 +40,6 @@ export const signaleraReducer = (
           title,
           body,
           level,
-          icon,
           timeToShow,
         },
       ];

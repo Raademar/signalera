@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SignaleraContext } from "../context";
-import { SignaleraItemType } from "../types";
+import { SignaleraItemType, SignaleraItemUserInput } from "../types";
 
 export function useSignalera() {
   const context = useContext(SignaleraContext);
@@ -10,10 +10,20 @@ export function useSignalera() {
 
   const { dispatch } = context;
 
-  const addSignal = (signal: SignaleraItemType) => {
+  const addSignal = (signal: SignaleraItemUserInput) => {
+    const baseSignal: SignaleraItemType = {
+      id: Date.now(),
+      title: signal.title,
+      body: signal.body || "",
+      level: signal.level || "primary",
+      timeToShow: signal.timeToShow || 5000,
+    };
+
+    const signalToAdd: SignaleraItemType = { ...baseSignal, ...signal };
+
     dispatch({
       type: "ADD_SIGNAL",
-      payload: signal,
+      payload: signalToAdd,
     });
   };
 

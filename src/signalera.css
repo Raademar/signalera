@@ -3,14 +3,14 @@
 }
 .item-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 200ms ease-out;
 }
 .item-exit {
   opacity: 1;
 }
 .item-exit-active {
   opacity: 0;
-  transition: opacity 500ms ease-in;
+  transition: opacity 200ms ease-out;
 }
 
 p,
@@ -26,35 +26,32 @@ p {
   position: absolute;
   top: 32px;
   right: 32px;
-}
-
-.signalera-dark-mode {
-  background-color: #312e51;
-}
-.signalera-dark-mode-text {
-  color: #fefefe;
-}
-
-.signalera-light-mode {
-  color: #312e51;
+  transition: all 200ms ease-in;
 }
 
 .signalera-item {
+  width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
+  transform: translateX(100%);
 }
 
 .signalera-item-text-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 32px;
+  margin-left: 16px;
   max-width: 400px;
+}
+
+.signalera-icon-wrapper {
+  height: 24px;
+  width: 24px;
 }
 
 .signalera-body,
@@ -62,27 +59,108 @@ p {
   text-align: left;
 }
 
-.signalera-primary-title {
+.signalera-dark-mode {
+  background-color: #312e51;
+}
+
+.signalera-light-mode {
+  color: #312e51;
+}
+
+.signalera-dark-primary-title {
   color: #00fa9a;
 }
-.signalera-primary-body {
+.signalera-dark-primary-body {
   color: #ddfadb;
 }
-.signalera-secondary-title {
+.signalera-dark-secondary-title {
   color: #00ffff;
 }
-.signalera-secondary-body {
+.signalera-dark-secondary-body {
   color: #e0ffff;
 }
-.signalera-error-title {
+.signalera-dark-error-title {
   color: #f64747;
 }
-.signalera-error-body {
+.signalera-dark-error-body {
   color: #fdd8d8;
 }
-.signalera-warning-title {
+.signalera-dark-warning-title {
   color: #f59208;
 }
-.signalera-warning-body {
+.signalera-dark-warning-body {
   color: #fef2d7;
+}
+
+.signalera-light-primary-title {
+  color: #00fa9a;
+}
+.signalera-light-secondary-title {
+  color: #00ffff;
+}
+.signalera-light-error-title {
+  color: #f64747;
+}
+.signalera-light-warning-title {
+  color: #f59208;
+}
+
+.signalera-light-primary-body,
+.signalera-light-secondary-body,
+.signalera-light-warning-body,
+.signalera-light-error-body {
+  color: #312e51;
+}
+
+.signalera-light-primary-background {
+  background-color: #ddfadb;
+}
+.signalera-light-secondary-background {
+  background-color: #e0ffff;
+}
+.signalera-light-error-background {
+  background-color: #fdd8d8;
+}
+.signalera-light-warning-background {
+  background-color: #fef2d7;
+}
+
+.slide-in {
+  animation: slide-in 0.5s forwards;
+  -webkit-animation: slide-in 0.5s forwards;
+}
+
+.slide-out {
+  animation: slide-out 0.5s forwards;
+  -webkit-animation: slide-out 0.5s forwards;
+}
+
+@keyframes slide-in {
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes slide-in {
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@-webkit-keyframes slide-out {
+  0% {
+    -webkit-transform: translateX(0%);
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+  }
 }
