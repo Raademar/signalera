@@ -23,5 +23,5 @@ export const levelToColor = {
 };
 
 export type SignaleraOptions = {
-  darkMode: boolean;
+  darkMode?: boolean;
 };

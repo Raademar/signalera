@@ -33,7 +33,7 @@ const mainReducer = (
 
 export const SignaleraProvider: React.FC<SignaleraOptions> = ({
   children,
-  darkMode,
+  darkMode = true,
 }) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
 
