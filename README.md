@@ -4,6 +4,10 @@ Easy to use in app notification component
 
 ## Example usage
 
+Install the package with
+
+`npm install signalera` or `yarn add signalera`
+
 Import the hook `useSignalera` and the Provider `Signalera` from `signalera`.
 
 `import { useSignalera, Signalera } from "signalera";`
